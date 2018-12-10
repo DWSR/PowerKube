@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+<ViewDefinitions>
+<View>
+  <Name>Pods</Name>
+  <ViewSelectedBy>
+    <TypeName>k8s.Models.V1Pod</TypeName>
+  </ViewSelectedBy>
+  <TableControl>
+    <TableHeaders>
+      <TableColumnHeader>
+        <Label>Name</Label>
+        <Width>40</Width>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Ready</Label>
+        <Width>15</Width>
+        <Alignment>Center</Alignment>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Status</Label>
+        <Width>10</Width>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Restarts</Label>
+        <Width>10</Width>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Age</Label>
+        <Width>16</Width>
+      </TableColumnHeader>
+    </TableHeaders>
+    <TableRowEntries>
+      <TableRowEntry>
+        <TableColumnItems>
+          <TableColumnItem>
+            <ScriptBlock>
+              $_.Metadata.Name
+            </ScriptBlock>
+          </TableColumnItem>
+          <TableColumnItem>
+            <ScriptBlock>
+              @(($_.Status.ContainerStatuses.Ready -match 'True').Count, ($_.Spec.Containers).Count) -join '/'
+            </ScriptBlock>
+          </TableColumnItem>
+          <TableColumnItem>
+            <ScriptBlock>$_.Status.Phase</ScriptBlock>
+          </TableColumnItem>
+          <TableColumnItem>
+            <ScriptBlock>
+              ($_.Status.ContainerStatuses.RestartCount | Measure-Object -Sum).Sum
+            </ScriptBlock>
+          </TableColumnItem>
+          <TableColumnItem>
+            <ScriptBlock>
+              ((Get-Date) - $_.Metadata.CreationTimestamp).Humanize($true)
+            </ScriptBlock>
+          </TableColumnItem>
+        </TableColumnItems>
+      </TableRowEntry>
+    </TableRowEntries>
+  </TableControl>
+</View>
+</ViewDefinitions>
+</Configuration>
