@@ -1,0 +1,13 @@
+image: dwsr/dotnet-sdk-pwsh:sdk3.0-pwsh6.1.0-bionic
+
+stages:
+  - build
+
+build:
+  stage: build
+  before_script:
+    - ./init.ps1
+  script:
+    - Invoke-psake
+  only:
+    - master

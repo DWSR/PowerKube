@@ -4,7 +4,9 @@ FormatTaskName "-------- {0} --------"
 
 Task BuildDocs {
   Write-Host "Generating documentation" -ForegroundColor Green
-  Out-Null = New-ExternalHelp .\docs -OutputPath .\output\en-US\ -Force
+  Remove-Item .\output\en-US\ -Recurse -Force -ErrorAction SilentlyContinue
+  Out-Null = New-ExternalHelp .\docs -OutputPath .\output\en-US\
+  Write-Host "Finished generating documentation"
 }
 
 Task BuildAssembly {
