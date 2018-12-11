@@ -3,7 +3,7 @@ using System.Management.Automation;
 using k8s;
 using k8s.Models;
 
-namespace PowerKube
+namespace PowerKube.Commands
 {
     [Cmdlet(VerbsCommon.Get, "K8sPod")]
     public class GetPodCommand : BaseK8sCommand

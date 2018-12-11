@@ -1,9 +1,10 @@
-Task Default -Depends Clean, BuildDocs, BuildAssembly, BuildPSD
+Task Default -Depends Clean, BuildAssembly, BuildPSD, BuildDocs
 
 FormatTaskName "-------- {0} --------"
 
 Task BuildDocs {
-
+  Write-Host "Generating documentation" -ForegroundColor Green
+  Out-Null = New-ExternalHelp .\docs -OutputPath .\output\en-US\ -Force
 }
 
 Task BuildAssembly {

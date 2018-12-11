@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Management.Automation;
 
-namespace PowerKube
+namespace PowerKube.Commands
 {
     public class BaseK8sCommand : Cmdlet
     {
