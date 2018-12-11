@@ -8,6 +8,6 @@ build:
   before_script:
     - ./init.ps1
   script:
-    - Invoke-psake
+    - pwsh -Command Invoke-psake
   only:
     - master
