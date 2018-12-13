@@ -22,8 +22,9 @@ opportunity to fill the gap by providing an object-oriented experience.
 ## Getting Started with Development
 
 1. Install the .Net Core SDK and PowerShell
-1. Invoke `init.ps1`, which will install [PSDepend](https://github.com/RamblingCookieMonster/PSDepend/)
-   if not already present and then install all project dependencies.
+1. Invoke `scripts/init.ps1`, which will install [PSDepend](https://github.com/RamblingCookieMonster/PSDepend/) and [psake](https://github.com/psake/psake)
+   if not already present.
+1. Run `Invoke-psake -Task InstallPSDepends` to install all PS dependencies.
 1. Start hacking!
 
 ## Building
