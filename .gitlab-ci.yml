@@ -1,13 +1,30 @@
 image: dwsr/dotnet-sdk-pwsh:sdk3.0-pwsh6.1.0-bionic
 
+before_script:
+  - 'export PSModulePath="${CI_PROJECT_DIR}/.psdependencies/:/usr/local/share/powershell/Modules:/opt/microsoft/powershell/6/Modules"'
+
+cache:
+  key: psdependencies
+  paths:
+    - .psdependencies
+
 stages:
   - build
+  - test
 
 build:
   stage: build
-  before_script:
-    - ./init.ps1
+  artifacts:
+    expire_in: 1d
+    paths:
+      - output
   script:
-    - pwsh -Command Invoke-psake
-  only:
-    - master
+    - ./scripts/init.ps1
+    - ./scripts/build.ps1
+
+int_tests:
+  stage: test
+  dependencies:
+    - build
+  script:
+    - ./scripts/test.ps1

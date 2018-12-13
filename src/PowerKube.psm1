@@ -1,4 +1,4 @@
-Get-ChildItem -Directory -Path $PSScriptRoot\lib\runtimes\ -Recurse -Filter 'native' |
+Get-ChildItem -Directory -Path $PSScriptRoot/lib/runtimes/ -Recurse -Filter 'native' |
     ForEach-Object {
         # For windows
         $env:PATH = '{0}{1}{2}' -f @(

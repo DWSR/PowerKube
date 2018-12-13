@@ -13,7 +13,7 @@
   Copyright             = '(c) 2018 Brandon McNama. Available under MIT License.'
   Description           = 'A PowerShell-native replacement for the kubectl binary'
   PowerShellVersion     = '6.1'
-  ProcessorArchitecture = 'Amd64'
+  # ProcessorArchitecture = 'Amd64'
   RequiredModules       = @(
     @{ ModuleName = 'powershellhumanizer'; ModuleVersion = '3.1'; GUID = '6dc9be51-eb93-4355-8648-0c725c0ac988' }
   )

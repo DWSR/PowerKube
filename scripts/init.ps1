@@ -3,6 +3,9 @@ if (-not [bool](Get-Module -ListAvailable PSDepend)) {
   Write-Host 'Installing PSDepend module to CurrentUser scope via PowerShellGet'
   Install-Module -Name PSDepend -Scope CurrentUser -Force
 }
+if (-not [bool](Get-Module -ListAvailable psake)) {
+  Write-Host 'Installing psake module to CurrentUser scope via PowerShellGet'
+  Install-Module -Name psake -Scope CurrentUser -Force
+}
 Import-Module PSDepend
-Write-Host 'Installing PowerKube dependencies' -ForegroundColor Green
-Invoke-PSDepend -Path $PSScriptRoot -Force
+Import-Module psake
