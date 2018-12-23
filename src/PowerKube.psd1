@@ -2,7 +2,7 @@
 
 @{
   RootModule            = 'PowerKube.psm1'
-  ModuleVersion         = '0.2.1'
+  ModuleVersion         = '0.2.2'
   CompatiblePSEditions  = @(
     'Core'
   )
@@ -28,10 +28,10 @@
   )
   FunctionsToExport     = @()
   CmdletsToExport       = @(
-    # "Get-K8sApiVersion"
+    "Get-K8sApiVersion"
     "Switch-K8sContext"
     "Get-K8sPod"
-    # "Get-K8sDeployment"
+    "Get-K8sDeployment"
     "Resolve-K8sResourceVersion"
   )
   VariablesToExport     = @()
