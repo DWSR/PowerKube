@@ -1,20 +1,37 @@
-image: dwsr/dotnet-sdk-pwsh:sdk3.0-pwsh6.1.0-bionic
-
-before_script:
-  - 'export PSModulePath="${CI_PROJECT_DIR}/.psdependencies/:/usr/local/share/powershell/Modules:/opt/microsoft/powershell/6/Modules"'
-
-cache:
-  key: psdependencies
-  paths:
-    - .psdependencies
-
 stages:
   - build
   - test
+  - publish
+  - cleanup
 
-build:
+# Hidden jobs to extend from
+###
+
+.terraform:
+  cache: {}
+  image:
+    name: hashicorp/terraform:0.11.9
+    entrypoint: [ "/bin/sh", "-c" ]
+  variables:
+    HELM_HOME: $CI_PROJECT_DIR/src/Tests/terraform/.helm
+
+.proj:
+  image: dwsr/dotnet-sdk-pwsh:sdk3.0-pwsh6.1.0-bionic
+  cache:
+    key: psdependencies
+    paths:
+      - .psdependencies
+  variables:
+    PSModulePath: "$CI_PROJECT_DIR/.psdependencies:/usr/local/share/powershell/Modules:/opt/microsoft/powershell/6/Modules"
+
+# "Real" jobs
+###
+
+proj_build:
+  extends: .proj
   stage: build
   artifacts:
+    name: $CI_PIPELINE_IID-build
     expire_in: 1d
     paths:
       - output
@@ -22,9 +39,49 @@ build:
     - ./scripts/init.ps1
     - ./scripts/build.ps1
 
+cluster_build:
+  extends: .terraform
+  stage: build
+  artifacts:
+    name: $CI_PIPELINE_IID-tfstate
+    expire_in: 1h
+    when: always
+    paths:
+      - src/Tests/terraform/.terraform
+      - src/Tests/terraform/terraform.tfstate*
+      - src/Tests/terraform/kubeconfig
+  script:
+    - cd src/Tests/terraform
+    - terraform init
+    - terraform apply -var cluster_name=$CI_PIPELINE_IID -auto-approve
+
 int_tests:
+  extends: .proj
   stage: test
   dependencies:
-    - build
+    - proj_build
+    - cluster_build
   script:
     - ./scripts/test.ps1
+
+publish:
+  extends: .proj
+  stage: publish
+  dependencies:
+    - proj_build
+  script:
+    - ./scripts/publish.ps1
+  only:
+    refs:
+      - tags
+      - master
+
+cluster_destroy:
+  extends: .terraform
+  stage: cleanup
+  dependencies:
+    - cluster_build
+  when: always
+  script:
+    - cd src/Tests/terraform
+    - terraform destroy -var cluster_name=$CI_PIPELINE_IID -force

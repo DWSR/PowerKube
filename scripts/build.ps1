@@ -1,2 +1,2 @@
 #!/usr/bin/env pwsh
-Invoke-psake -Task Build
+Invoke-psake -Task Build -NoLogo

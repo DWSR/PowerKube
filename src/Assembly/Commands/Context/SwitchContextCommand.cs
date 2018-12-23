@@ -2,20 +2,18 @@
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
 using YamlDotNet.Serialization;
 using k8s;
+using PowerKube.Commands.Base;
 
-namespace PowerKube.Commands
+namespace PowerKube.Commands.Context
 {
   [Cmdlet(VerbsCommon.Switch, "K8sContext")]
   [OutputType(typeof(void))]
-  public class SwitchContextCommand : Cmdlet
+  public class SwitchContextCommand : K8sBaseCommand
   {
     [Parameter(Mandatory = true, Position = 0)]
-    public string Context { get; set; }
-    [Parameter()]
-    public string KubeConfig { get; set; }
+    public new string Context { get; set; }
 
     protected override void ProcessRecord()
     {

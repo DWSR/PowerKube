@@ -5,7 +5,6 @@
   ModuleVersion         = '0.1.0'
   CompatiblePSEditions  = @(
     'Core'
-    'Desktop'
   )
   GUID                  = '2c9e5168-bb86-4e38-b4a7-399950b23baa'
   Author                = 'Brandon McNama'
@@ -20,15 +19,17 @@
   # RequiredAssemblies = @()
   # ScriptsToProcess = @()
   # TypesToProcess = @()
-  FormatsToProcess      = @(
-    ".\Formats\Pod.format.ps1xml"
-  )
+  FormatsToProcess      = '*'
   NestedModules         = @(
     ".\lib\PowerKube.dll"
   )
   FunctionsToExport     = @()
   CmdletsToExport       = @(
+    # "Get-K8sApiVersion"
     "Switch-K8sContext"
+    "Get-K8sPod"
+    # "Get-K8sDeployment"
+    "Resolve-K8sResourceVersion"
   )
   VariablesToExport     = @()
   AliasesToExport       = @()
@@ -41,6 +42,10 @@
         'kubernetes'
         'k8s'
         'kubectl'
+        'PSEdition_Core'
+        'Windows'
+        'Linux'
+        'macOS'
       )
       LicenseUri   = 'https://gitlab.com/dwsr/powerkube/blob/master/LICENSE'
       ProjectUri   = 'https://gitlab.com/dwsr/powerkube'

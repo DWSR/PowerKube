@@ -4,7 +4,7 @@ Get-ChildItem -Directory -Path $PSScriptRoot/lib/runtimes/ -Recurse -Filter 'nat
         $env:PATH = '{0}{1}{2}' -f @(
             $_.FullName
             [System.IO.Path]::PathSeparator
-            $env:PATH 
+            $env:PATH
         )
         # For Linux
         $env:LD_LIBRARY_PATH = '{0}{1}{2}' -f @(
