@@ -14,6 +14,9 @@ stages:
     entrypoint: [ "/bin/sh", "-c" ]
   variables:
     HELM_HOME: $CI_PROJECT_DIR/src/Tests/terraform/.helm
+  except:
+    variables:
+      - $DIGITALOCEAN_TOKEN == null
 
 .proj:
   image: dwsr/dotnet-sdk-pwsh:sdk3.0-pwsh6.1.0-bionic
@@ -34,7 +37,7 @@ proj_build:
     name: $CI_PIPELINE_IID-build
     expire_in: 1d
     paths:
-      - output
+      - PowerKube
   script:
     - ./scripts/init.ps1
     - ./scripts/build.ps1
@@ -63,6 +66,9 @@ int_tests:
     - cluster_build
   script:
     - ./scripts/test.ps1
+  except:
+    variables:
+      - $DIGITALOCEAN_TOKEN == null
 
 publish:
   extends: .proj
@@ -73,7 +79,6 @@ publish:
     - ./scripts/publish.ps1
   only:
     refs:
-      - tags
       - master
 
 cluster_destroy:
