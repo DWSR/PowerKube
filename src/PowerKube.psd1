@@ -2,7 +2,7 @@
 
 @{
   RootModule            = 'PowerKube.psm1'
-  ModuleVersion         = '0.2.2'
+  ModuleVersion         = '0.2.3'
   CompatiblePSEditions  = @(
     'Core'
   )
