@@ -2,7 +2,7 @@
 
 @{
   RootModule            = 'PowerKube.psm1'
-  ModuleVersion         = '0.2.0'
+  ModuleVersion         = '0.2.1'
   CompatiblePSEditions  = @(
     'Core'
   )
@@ -19,7 +19,10 @@
   # RequiredAssemblies = @()
   # ScriptsToProcess = @()
   # TypesToProcess = @()
-  FormatsToProcess      = '*'
+  FormatsToProcess     = @(
+    'Formats\Deployment.format.ps1xml'
+    'Formats\Pod.format.ps1xml'
+  )
   NestedModules         = @(
     ".\lib\PowerKube.dll"
   )
