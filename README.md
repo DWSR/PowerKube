@@ -1,5 +1,18 @@
 # PowerKube
 
+<!-- TOC -->
+
+- [PowerKube](#powerkube)
+  - [Description](#description)
+  - [Motivation](#motivation)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Getting Started with Development](#getting-started-with-development)
+  - [Building](#building)
+  - [Recognition](#recognition)
+
+<!-- /TOC -->
+
 ## Description
 
 A PowerShell-native replacement for the `kubectl` binary.
@@ -16,8 +29,13 @@ opportunity to fill the gap by providing an object-oriented experience.
 
 ## Requirements
 
-* PowerShell Core 6.1 or later (this might work in Windows PowerShell 5.1 or
+- PowerShell Core 6.1 or later (this might work in Windows PowerShell 5.1 or
   later, but it's untested)
+
+## Installation
+
+`PowerKube` is available from [PowerShell Gallery](https://www.powershellgallery.com)
+which means you can install it via `Install-Module` or by manually downloading it.
 
 ## Getting Started with Development
 
@@ -31,3 +49,16 @@ opportunity to fill the gap by providing an object-oriented experience.
 
 1. Follow the instructions under [Getting Started with Development](#getting_started_with_development)
 1. Run `Invoke-psake`
+
+## Recognition
+
+A big thank you to the following people:
+
+- [Joel Bennett (Jaykul)](https://github.com/jaykul) - for providing Pansies, PowerLine, and other
+  awesome PowerShell modules that helped provide a roadmap and examples.
+- [RamblingCookieMonster](https://ramblingcookiemonster.github.io/) - for providing PSDeploy,
+  PSDepend, and other great PowerShell modules that are used in this project
+- [Joel (Vexx32)](https://vexx32.github.io/) - for providing advice and answers on how to
+  build a PowerShell module in C#.
+- PowerShell [Slack](https://j.mp/psslack)/[Discord](https://j.mp/psdiscord) - for answering all the
+  stupid (and some not so stupid) questions about PowerShell and the .NET ecosystem.

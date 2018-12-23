@@ -2,9 +2,9 @@
 <Configuration>
 <ViewDefinitions>
 <View>
-  <Name>Pods</Name>
+  <Name>Deployments</Name>
   <ViewSelectedBy>
-    <TypeName>k8s.Models.V1Pod</TypeName>
+    <TypeName>k8s.Models.Extensionsv1beta1Deployment</TypeName>
   </ViewSelectedBy>
   <TableControl>
     <TableHeaders>
@@ -12,17 +12,20 @@
         <Label>Name</Label>
       </TableColumnHeader>
       <TableColumnHeader>
-        <Label>Ready</Label>
+        <Label>Desired</Label>
+        <Width>10</Width>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Current</Label>
+        <Width>10</Width>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Up-To-Date</Label>
         <Width>15</Width>
-        <Alignment>Center</Alignment>
       </TableColumnHeader>
       <TableColumnHeader>
-        <Label>Status</Label>
-        <Width>10</Width>
-      </TableColumnHeader>
-      <TableColumnHeader>
-        <Label>Restarts</Label>
-        <Width>10</Width>
+        <Label>Available</Label>
+        <Width>15</Width>
       </TableColumnHeader>
       <TableColumnHeader>
         <Label>Age</Label>
@@ -39,15 +42,38 @@
           </TableColumnItem>
           <TableColumnItem>
             <ScriptBlock>
-              @(($_.Status.ContainerStatuses.Ready -match 'True').Count, ($_.Spec.Containers).Count) -join '/'
+              if([String]::IsNullOrEmpty($_.Status.Replicas)) {
+                Write-Output "0"
+              } else {
+                $_.Status.Replicas 
+              }
             </ScriptBlock>
           </TableColumnItem>
           <TableColumnItem>
-            <ScriptBlock>$_.Status.Phase</ScriptBlock>
+            <ScriptBlock>
+              if([String]::IsNullOrEmpty($_.Status.ReadyReplicas)) {
+                Write-Output "0"
+              } else {
+                $_.Status.ReadyReplicas
+              }
+            </ScriptBlock>
           </TableColumnItem>
           <TableColumnItem>
             <ScriptBlock>
-              ($_.Status.ContainerStatuses.RestartCount | Measure-Object -Sum).Sum
+              if([String]::IsNullOrEmpty($_.Status.UpdatedReplicas)) {
+                Write-Output "0"
+              } else {
+                $_.Status.UpdatedReplicas
+              }
+            </ScriptBlock>
+          </TableColumnItem>
+          <TableColumnItem>
+            <ScriptBlock>
+              if ([String]::IsNullOrEmpty($_.Status.AvailableReplicas)) {
+                Write-Output "0"
+              } else {
+                $_.Status.AvailableReplicas
+              }
             </ScriptBlock>
           </TableColumnItem>
           <TableColumnItem>

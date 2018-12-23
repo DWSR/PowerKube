@@ -3,6 +3,10 @@
 
 /output
 /.psdependencies
+.terraform/
+terraform.tfstate*
+kubeconfig
+/PowerKube
 
 # User-specific files
 *.suo

@@ -10,4 +10,5 @@
   platyps             = '0.12.0'
   ChangelogManagement = 'latest'
   powershellhumanizer = 'latest'
+  PSScriptAnalyzer    = 'latest'
 }

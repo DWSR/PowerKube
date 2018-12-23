@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Added installation instructions to README
+- Added package to PowershellGallery
+- Added Get-K8sPod cmdlet
 
 ### Changed
 

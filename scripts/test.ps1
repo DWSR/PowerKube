@@ -1,2 +1,2 @@
 #!/usr/bin/env pwsh
-Invoke-psake -Task Test
+Invoke-psake -Task Test -NoLogo
