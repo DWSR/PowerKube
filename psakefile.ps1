@@ -37,6 +37,17 @@ Task BuildPSD -Depends BuildAssembly {
   foreach ($i in $itemstocopy) {
     Copy-Item -Recurse "$PSScriptRoot/src/$i" "$PSScriptRoot/PowerKube/$i"
   }
+  try {
+    Test-ModuleManifest -Path "$PSScriptRoot/PowerKube/PowerKube.psd1"
+  }
+  catch [ArgumentException] {
+    if ($env:CI) {
+      exit 1
+    }
+    else {
+      throw $_
+    }
+  }
 }
 
 Task Clean {
