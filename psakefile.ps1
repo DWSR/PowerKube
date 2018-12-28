@@ -123,7 +123,7 @@ Task Publish {
         $env:BHCommitMessage -match '!deploy'
     ) {
       Set-ModuleFormats -FormatsRelativePath Formats
-      Invoke-PSDeploy -Path $PSScriptRoot -Force
+      Invoke-PSDeploy -Path "$PSScriptRoot/PowerKube.PSDeploy.ps1" -Force
     } else {
       "Skipping deployment: To deploy, ensure that...`n" +
       "`t* You are committing to the master branch (Current: $ENV:BHBranchName) `n" +

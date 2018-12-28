@@ -1,8 +1,6 @@
-
-
 @{
   RootModule            = 'PowerKube.psm1'
-  ModuleVersion         = '0.2.3'
+  ModuleVersion         = '0.2.4'
   CompatiblePSEditions  = @(
     'Core'
   )
@@ -54,6 +52,18 @@
       ProjectUri   = 'https://gitlab.com/dwsr/powerkube'
 
       ReleaseNotes = '
+      0.2.4: Fix publish scripts (again) to work around PSDeploy issue.
+             Add PowerShellHumanizer workaround instructions in README
+
+      0.2.3: Fix publish scripts
+
+      0.2.2: Added Get-K8sDeployment cmdlet
+             Added Get-K8sApiVersion cmdlet
+
+      0.2.1: Fix module manifest
+
+      0.2.0: Added Get-K8sPod cmdlet
+
       0.1.0-beta: Initial release.
       '
 

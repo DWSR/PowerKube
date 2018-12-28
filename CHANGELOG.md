@@ -17,6 +17,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.2.4] - 2018-12-27
+### Added
+- Added README to include instructions on PSHumanizer workaround.
+
+### Changed
+- Updated ReleaseNotes in .psd1 for display in PSGallery
+
+### Deprecated
+
+### Removed
+
+### Fixed
+- Modify Publish psake task to work around [an issue in PSDeploy regarding case-sensitive OSes](https://github.com/RamblingCookieMonster/PSDeploy/issues/119).
+
+## [0.2.3] - 2018-12-23
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+- Fix Publish psake task
+
+### Security
+
 ## [0.2.2] - 2018-12-23
 ### Added
 - Added Get-K8sDeployment cmdlet
@@ -66,8 +94,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added Switch-K8sContext cmdlet
 
-[Unreleased]: https://gitlab.com/dwsr/powerkube/compare/0.2.2...master
+[Unreleased]: https://gitlab.com/dwsr/powerkube/compare/0.2.4...master
 [0.1.0]: https://gitlab.com/dwsr/powerkube/tree/0.1.0
 [0.2.0]: https://gitlab.com/dwsr/powerkube/tree/0.2.0
 [0.2.1]: https://gitlab.com/dwsr/powerkube/tree/0.2.1
 [0.2.2]: https://gitlab.com/dwsr/powerkube/tree/0.2.2
+[0.2.3]: https://gitlab.com/dwsr/powerkube/tree/0.2.3
+[0.2.4]: https://gitlab.com/dwsr/powerkube/tree/0.2.3

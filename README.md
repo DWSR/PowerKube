@@ -7,6 +7,8 @@
   - [Motivation](#motivation)
   - [Requirements](#requirements)
   - [Installation](#installation)
+    - [General Install Instructions](#general-install-instructions)
+    - [Note for Case Sensitive OSes (Linux, Unix, etc.)](#note-for-case-sensitive-oses-linux-unix-etc)
   - [Getting Started with Development](#getting-started-with-development)
   - [Building](#building)
   - [Recognition](#recognition)
@@ -34,8 +36,16 @@ opportunity to fill the gap by providing an object-oriented experience.
 
 ## Installation
 
+### General Install Instructions
+
 `PowerKube` is available from [PowerShell Gallery](https://www.powershellgallery.com)
 which means you can install it via `Install-Module` or by manually downloading it.
+
+### Note for Case Sensitive OSes (Linux, Unix, etc.)
+
+PowerShellHumanizer has [a bug](https://github.com/dfinke/PowerShellHumanizer/pull/15) when used on case sensitive OSes.
+In order to work around it, simply rename `Humanizer.dll` to `humanizer.dll` in
+PowerShellHumanizer's install folder.
 
 ## Getting Started with Development
 
