@@ -3,21 +3,21 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using YamlDotNet.Serialization;
-using k8s;
+using k8s.KubeConfigModels;
 using PowerKube.Commands.Base;
 
 namespace PowerKube.Commands.Context
 {
   [Cmdlet(VerbsCommon.Switch, "K8sContext")]
   [OutputType(typeof(void))]
-  public class SwitchContextCommand : K8sBaseCommand
+  public class SwitchContextCommand : BaseContextCommand
   {
     [Parameter(Mandatory = true, Position = 0)]
     public new string Context { get; set; }
 
     protected override void ProcessRecord()
     {
-      k8s.KubeConfigModels.K8SConfiguration config = KubernetesClientConfiguration.LoadKubeConfig(KubeConfig);
+      K8SConfiguration config = Helpers.GetConfigObj(KubeConfig);
       var contexts = config.Contexts.Select(i => i.Name);
       if (contexts.Contains(Context))
       {

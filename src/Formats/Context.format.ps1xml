@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+<ViewDefinitions>
+<View>
+  <Name>Contexts</Name>
+  <ViewSelectedBy>
+    <TypeName>k8s.KubeConfigModels.Context</TypeName>
+  </ViewSelectedBy>
+  <TableControl>
+    <TableHeaders>
+      <TableColumnHeader>
+        <Label>Current</Label>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Name</Label>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Cluster</Label>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>AuthInfo</Label>
+      </TableColumnHeader>
+      <TableColumnHeader>
+        <Label>Namespace</Label>
+      </TableColumnHeader>
+    </TableHeaders>
+    <TableRowEntries>
+      <TableRowEntry>
+        <TableColumnItems>
+          <TableColumnItem>
+            <ScriptBlock>
+              if ($_.Name -eq (Get-K8sCurrentContext)) { '*' }
+            </ScriptBlock>
+          </TableColumnItem>
+          <TableColumnItem>
+            <PropertyName>Name</PropertyName>
+          </TableColumnItem>
+          <TableColumnItem>
+            <ScriptBlock>
+              $_.ContextDetails.Cluster
+            </ScriptBlock>
+          </TableColumnItem>
+          <TableColumnItem>
+            <ScriptBlock>
+              $_.ContextDetails.User
+            </ScriptBlock>
+          </TableColumnItem>
+          <TableColumnItem>
+            <PropertyName>Namespace</PropertyName>
+          </TableColumnItem>
+        </TableColumnItems>
+      </TableRowEntry>
+    </TableRowEntries>
+  </TableControl>
+</View>
+</ViewDefinitions>
+</Configuration>

@@ -1,6 +1,6 @@
 @{
   RootModule            = 'PowerKube.psm1'
-  ModuleVersion         = '0.2.4'
+  ModuleVersion         = '0.2.5'
   CompatiblePSEditions  = @(
     'Core'
   )
@@ -18,6 +18,7 @@
   # ScriptsToProcess = @()
   # TypesToProcess = @()
   FormatsToProcess     = @(
+    'Formats\Context.format.ps1xml'
     'Formats\Deployment.format.ps1xml'
     'Formats\Pod.format.ps1xml'
   )
@@ -31,6 +32,8 @@
     "Get-K8sPod"
     "Get-K8sDeployment"
     "Resolve-K8sResourceVersion"
+    "Get-K8sContext"
+    "Get-K8sCurrentContext"
   )
   VariablesToExport     = @()
   AliasesToExport       = @()
@@ -52,6 +55,10 @@
       ProjectUri   = 'https://gitlab.com/dwsr/powerkube'
 
       ReleaseNotes = '
+      0.2.5: Add Get-K8sContext command
+             Add Get-K8sCurrentContext command
+             Fix external help file not being generated
+
       0.2.4: Fix publish scripts (again) to work around PSDeploy issue.
              Add PowerShellHumanizer workaround instructions in README
 

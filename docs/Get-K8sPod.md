@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-K8sPod
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Lists Kubernetes pods
 
 ## SYNTAX
 
@@ -25,21 +25,26 @@ Get-K8sPod [[-Name] <String>] [-LabelSelector <String[]>] [-FieldSelector <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Lists Kubernetes pods
 
 ## EXAMPLES
 
-### Example 1
+### List pods in the current namespace
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-K8sPod
 ```
 
-{{ Add example description here }}
+### List pods in all namespaces in this cluster
+
+```powershell
+PS C:\> Get-K8sPod -AllNamespaces
+```
 
 ## PARAMETERS
 
 ### -AllNamespaces
-{{Fill AllNamespaces Description}}
+Whether or not to list pods from all namespaces
 
 ```yaml
 Type: SwitchParameter
@@ -54,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -Cluster
-{{Fill Cluster Description}}
+Which cluster to list pods in.
 
 ```yaml
 Type: String
@@ -69,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-{{Fill Context Description}}
+Which context to list pods in.
 
 ```yaml
 Type: String
@@ -84,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -FieldSelector
-{{Fill FieldSelector Description}}
+Only list pods whose fields match this criteria.
 
 ```yaml
 Type: String[]
@@ -99,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -KubeConfig
-{{Fill KubeConfig Description}}
+The kube config file to use.
 
 ```yaml
 Type: String
@@ -114,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabelSelector
-{{Fill LabelSelector Description}}
+Only list pods whose labels match this.
 
 ```yaml
 Type: String[]
@@ -129,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{Fill Name Description}}
+The name of a specific pod to get
 
 ```yaml
 Type: String
@@ -144,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-{{Fill Namespace Description}}
+The name of the namespace to list pods in
 
 ```yaml
 Type: String
@@ -159,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkipCertificateCheck
-{{Fill SkipCertificateCheck Description}}
+Whether or not to validate the certificate presented by the API.
 
 ```yaml
 Type: SwitchParameter

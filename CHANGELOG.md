@@ -17,6 +17,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.2.5] - 2018-12-29
+### Added
+- Added Get-K8sContext cmdlet
+- Added Get-K8sCurrentContext cmdlet
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+- Fixed help file not being published alongside the module
+
+### Security
+
 ## [0.2.4] - 2018-12-27
 ### Added
 - Added README to include instructions on PSHumanizer workaround.
@@ -94,10 +110,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added Switch-K8sContext cmdlet
 
-[Unreleased]: https://gitlab.com/dwsr/powerkube/compare/0.2.4...master
+[Unreleased]: https://gitlab.com/dwsr/powerkube/compare/0.2.5...master
 [0.1.0]: https://gitlab.com/dwsr/powerkube/tree/0.1.0
 [0.2.0]: https://gitlab.com/dwsr/powerkube/tree/0.2.0
 [0.2.1]: https://gitlab.com/dwsr/powerkube/tree/0.2.1
 [0.2.2]: https://gitlab.com/dwsr/powerkube/tree/0.2.2
 [0.2.3]: https://gitlab.com/dwsr/powerkube/tree/0.2.3
-[0.2.4]: https://gitlab.com/dwsr/powerkube/tree/0.2.3
+[0.2.4]: https://gitlab.com/dwsr/powerkube/tree/0.2.4
+[0.2.5]: https://gitlab.com/dwsr/powerkube/tree/0.2.5

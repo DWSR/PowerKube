@@ -2,14 +2,13 @@ Task Default -Depends Build
 
 FormatTaskName "-------- {0} --------"
 
-Task Build -Depends Clean, InstallPSDependsForCI, BuildAssembly, BuildPSD, BuildDocs {
-}
+Task Build -Depends Clean, InstallPSDependsForCI, BuildAssembly, BuildPSD, BuildDocs {}
 
 Task BuildDocs {
-  Write-Output "Generating documentation" -ForegroundColor Green
-  Remove-Item ./PowerKube/en-US/ -Recurse -Force -ErrorAction SilentlyContinue
-  Out-Null = New-ExternalHelp ./docs -OutputPath ./PowerKube/en-US/
-  Write-Output "Finished generating documentation" -ForegroundColor Green
+  Write-Host "Generating documentation" -ForegroundColor Green
+  Remove-Item $PSScriptRoot/PowerKube/en-US/ -Recurse -Force -ErrorAction SilentlyContinue
+  New-ExternalHelp $PSScriptRoot/docs -OutputPath $PSScriptRoot/PowerKube/en-US/
+  Write-Host "Finished generating documentation" -ForegroundColor Green
 }
 
 Task BuildAssembly {
@@ -87,8 +86,7 @@ Task Test {
   }
 }
 
-Task Format {
-}
+Task Format {}
 
 Task InstallPSDepends -Precondition { -not $env:CI } {
   Invoke-PSDepend -Path $PSScriptRoot -Force
@@ -97,7 +95,7 @@ Task InstallPSDepends -Precondition { -not $env:CI } {
 Task InstallPSDependsForCI -Precondition { $env:CI } {
   # This works around a bug in PSDepend when comparing versions that are coercable to doubles (such
   # as 3.1). PowerShellHumanizer is the only module that we depend on that does this, so it gets
-  # special treatment 
+  # special treatment
   if ((Test-Path "$PSScriptRoot/.psdependencies/PowerShellHumanizer")) {
     Remove-Item -Recurse -Force "$PSScriptRoot/.psdependencies/PowerShellHumanizer"
   }

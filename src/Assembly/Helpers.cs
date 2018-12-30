@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Reflection;
+using System.Linq;
 using k8s;
 using k8s.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
+using k8s.KubeConfigModels;
 
 namespace PowerKube
 {
@@ -27,6 +27,10 @@ namespace PowerKube
         {
             KubernetesClientConfiguration config = KubernetesClientConfiguration.BuildConfigFromConfigFile(kubeConfig, context);
             return new Kubernetes(config);
+        }
+        public static K8SConfiguration GetConfigObj(string kubeConfig = null)
+        {
+            return KubernetesClientConfiguration.LoadKubeConfig(GetConfigFilePath(kubeConfig));
         }
         public static string GetCurrentNamespace(string configFile = null)
         {
@@ -107,6 +111,21 @@ namespace PowerKube
         public static V1APIGroupList GetApiGroups(IKubernetes client)
         {
             return client.GetAPIVersions1();
+        }
+        public static MethodInfo ResolveGetApiGroupFunctionForVersion(string apiGroup)
+        {
+            MethodInfo[] methods = typeof(KubernetesExtensions).GetMethods().Where(x => x.Name.Contains("GetAPIGroup")).ToArray();
+            foreach (MethodInfo method in methods)
+            {
+                switch (apiGroup)
+                {
+                    case "extensions/v1beta1":
+                        return null;
+                    default:
+                        throw new ArgumentException(string.Format("Cannot resolve library function to retrieve API group {0}", apiGroup));
+                }
+            }
+            return null;
         }
     }
 }
