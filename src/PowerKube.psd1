@@ -1,6 +1,6 @@
 @{
   RootModule            = 'PowerKube.psm1'
-  ModuleVersion         = '0.2.5'
+  ModuleVersion         = '0.2.6'
   CompatiblePSEditions  = @(
     'Core'
   )
@@ -30,6 +30,7 @@
     "Get-K8sApiVersion"
     "Switch-K8sContext"
     "Get-K8sPod"
+    "Remove-K8sPod"
     "Get-K8sDeployment"
     "Resolve-K8sResourceVersion"
     "Get-K8sContext"
@@ -55,6 +56,8 @@
       ProjectUri   = 'https://gitlab.com/dwsr/powerkube'
 
       ReleaseNotes = '
+      0.2.6: Add Remove-K8sPod command
+
       0.2.5: Add Get-K8sContext command
              Add Get-K8sCurrentContext command
              Fix external help file not being generated

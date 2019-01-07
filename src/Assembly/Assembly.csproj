@@ -12,6 +12,7 @@
     <RepositoryType>Git</RepositoryType>
     <PackageProjectUrl>https://github.com/DWSR/PowerKube</PackageProjectUrl>
     <RuntimeIdentifiers>linux-x64;osx.10.12-x64;win10-x64</RuntimeIdentifiers>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

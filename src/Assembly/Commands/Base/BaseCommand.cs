@@ -3,7 +3,7 @@ using System.Management.Automation;
 
 namespace PowerKube.Commands.Base
 {
-    public class K8sBaseCommand : Cmdlet
+    public abstract class K8sBaseCommand : Cmdlet
     {
         [Parameter()]
         public string Context { get; set; }
